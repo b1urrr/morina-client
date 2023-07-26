@@ -1,6 +1,6 @@
 # Morina web-store | Client | WIP
 
-# More comprehensive documentation to be added as the project progresses
+## More comprehensive documentation to be added as the project progresses
 
 ### Current Progress
 

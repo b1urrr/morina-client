@@ -7,6 +7,7 @@ import {
   Error,
   About,
   Products,
+  Checkout,
 } from './pages';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -29,6 +30,7 @@ useEffect(()=>{
       <Route path='cart' element={<Cart />} />
       <Route path='products' element={<Products />} />
       <Route path='products/:id' element={<SingleProduct />} />
+      <Route path='checkout' element= {<Checkout />} />
       <Route path='*' element={<Error />} />
     </Routes>
     <Footer />

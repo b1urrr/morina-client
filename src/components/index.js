@@ -15,6 +15,7 @@ import CartContent from "./CartContent";
 import CartItem from "./CartItem";
 import CartTotals from "./CartTotals";
 import CartColumns from "./CartColumns";
+import PlaceOrder from "./PlaceOrder";
 export {
   Navbar,
   Sidebar,
@@ -33,4 +34,5 @@ export {
   CartItem,
   CartTotals,
   CartColumns,
+  PlaceOrder
 };

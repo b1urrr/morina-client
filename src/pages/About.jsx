@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { PageHero } from '../components'
 import heroImg from '../assets/hero.jpg'
 const AboutPage = () => {
   return (

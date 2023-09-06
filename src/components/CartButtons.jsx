@@ -1,26 +1,26 @@
-import React from 'react'
-import { BsCart4} from 'react-icons/bs'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React from "react";
+import { BsCart4 } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 const CartButtons = () => {
-  const {total_items} = useSelector((store) => store.cart)
+  const { total_items } = useSelector((store) => store.cart);
   return (
-    <Wrapper className='cart-btn-wrapper'>
-      <Link to='/cart' className='cart-btn'>
+    <Wrapper className="cart-btn-wrapper">
+      <Link to="/cart" className="cart-btn">
         Количка
-        <span className='cart-container'>
+        <span className="cart-container">
           <BsCart4 />
-          <span className='cart-value'>{total_items}</span>
+          <span className="cart-value">{total_items}</span>
         </span>
       </Link>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 
   .cart-btn {
     color: var(--clr-primary-1);
@@ -31,7 +31,7 @@ justify-content: center;
     align-items: center;
   }
   .cart-btn svg {
-    font-size: 2rem
+    font-size: 2rem;
   }
   .cart-container {
     display: flex;
@@ -58,5 +58,5 @@ justify-content: center;
     color: var(--clr-white);
     padding: 12px;
   }
-`
-export default CartButtons
+`;
+export default CartButtons;

@@ -16,6 +16,7 @@ export const links = [
     },
 ]
 
-export const products_url = 'https://course-api.com/react-store-products'
+// export const products_url = 'https://course-api.com/react-store-products'
+export const products_url = "http://localhost:5000/api/products";
 
 export const single_product_url = `https://course-api.com/react-store-single-product?id=`

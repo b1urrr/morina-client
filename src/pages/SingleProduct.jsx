@@ -16,17 +16,7 @@ const SingleProductPage = () => {
     dispatch(getSingleProduct(`${url}${id}`));
   }, [id]);
 
-  const {
-    name,
-    price,
-    description,
-    stock,
-    stars,
-    reviews,
-    id: sku,
-    company,
-    images,
-  } = product;
+  const { name, price, description, stock, id: sku, images } = product;
   return (
     <Wrapper>
       <div className="section section-center page">

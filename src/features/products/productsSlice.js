@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { products_url as url } from "../../utils/constants";
 
-
 const initialState = {
   // product
   products_loading: false,
@@ -25,6 +24,10 @@ const initialState = {
     max_price: 0,
     price: 0,
   },
+  // Database
+  current_id: null,
+  create_product_loading: false,
+  create_product: [],
 };
 
 export const getAllProducts = createAsyncThunk(
@@ -50,9 +53,17 @@ export const getSingleProduct = createAsyncThunk(
     }
   }
 );
-
-
-
+export const createProduct = createAsyncThunk(
+  "products/createProduct", 
+  async (product) => {
+    try {
+      const res = await axios.post(url, product)
+      return res.data;
+    } catch (error) {
+      console.log(error)
+    } 
+  }
+)
 
 const productsSlice = createSlice({
   name: "products",
@@ -88,41 +99,46 @@ const productsSlice = createSlice({
       }
     },
     updateFilters: (state, action) => {
-      let { name, value } = action.payload
-      state.filters = {...state.filters, [name]: value}
-      
-      const { text, category, color, price } = state.filters
+      let { name, value } = action.payload;
+      state.filters = { ...state.filters, [name]: value };
 
-      let tempProducts = [...state.products]
+      const { text, category, color, price } = state.filters;
+
+      let tempProducts = [...state.products];
       if (text) {
         tempProducts = tempProducts.filter((product) =>
           product.name.toLowerCase().includes(text)
-        )
+        );
       }
-      if (category !== 'all') {
+      if (category !== "all") {
         tempProducts = tempProducts.filter(
           (product) => product.category === category
-        )
+        );
       }
-      if (color !== 'all') {
+      if (color !== "all") {
         tempProducts = tempProducts.filter((product) => {
-          return product.colors.find((c) => c === color)
-        })
+          return product.colors.find((c) => c === color);
+        });
       }
-      tempProducts = tempProducts.filter((product) => product.price <= price)
-      state.filtered_products = tempProducts
+      tempProducts = tempProducts.filter((product) => product.price <= price);
+      state.filtered_products = tempProducts;
     },
     clearFilters: (state) => {
       state.filters = {
         ...state.filters,
-        text: '',
-        company: 'all',
-        category: 'all',
-        color: 'all',
+        text: "",
+        company: "all",
+        category: "all",
+        color: "all",
         price: state.filters.max_price,
-      }
-      state.filtered_products = state.products
+      };
+      state.filtered_products = state.products;
     },
+    // Database actions
+    setCurrentId: (state, action) => {
+      state.current_id = action.payload.value;
+    },
+    // End
   },
   extraReducers: {
     [getAllProducts.pending]: (state) => {
@@ -150,6 +166,9 @@ const productsSlice = createSlice({
     [getSingleProduct.rejected]: (state) => {
       state.single_product_loading = false;
     },
+    [createProduct.fulfilled]: (state, action) => {
+      state.create_product_loading = false;
+    },
   },
 });
 
@@ -159,5 +178,6 @@ export const {
   updateSort,
   updateFilters,
   clearFilters,
+  setCurrentId,
 } = productsSlice.actions;
 export default productsSlice.reducer;

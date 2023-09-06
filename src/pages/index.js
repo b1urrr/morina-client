@@ -5,6 +5,7 @@ import Cart from './Cart'
 import Error from './Error'
 import SingleProduct from './SingleProduct'
 import Checkout from './Checkout'
+import AddProducts from './AddProducts'
 export {
   Home,
   Cart,
@@ -12,5 +13,6 @@ export {
   Error,
   Products,
   SingleProduct,
-  Checkout
+  Checkout,
+  AddProducts
 }

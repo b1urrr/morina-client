@@ -9,7 +9,7 @@ const initialState = {
   cart: getCartFromLocalStorage(),
   total_items: 0,
   total_amount: 0,
-  shipping_fee: 534,
+  shipping_fee: 555,
 };
 
 const cartSlice = createSlice({

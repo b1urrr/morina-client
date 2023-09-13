@@ -32,7 +32,7 @@ const AddToCart = ({ product }) => {
   return (
     <Wrapper>
       <div className='colors'>
-        <span>colors :</span>
+        <span>цветове:</span>
         <div>
           {colors.map((color, index) => {
             return (
@@ -62,7 +62,7 @@ const AddToCart = ({ product }) => {
           className='btn'
           onClick={() => dispatch(addToCart({id, mainColor, amount, product}))}
         >
-          add to cart
+          Добави в количката
         </Link>
       </div>
     </Wrapper>
@@ -110,7 +110,7 @@ const Wrapper = styled.section`
 
   .btn {
     margin-top: 1rem;
-    width: 140px;
+    width: 210px;
   }
 `
 export default AddToCart

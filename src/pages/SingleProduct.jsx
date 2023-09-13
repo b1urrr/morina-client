@@ -5,23 +5,29 @@ import { formatPrice } from "../utils/helpers";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleProduct } from "../features/products/productsSlice";
+import { getAllProducts, getSingleProduct } from "../features/products/productsSlice";
 import { ProductImages, AddToCart } from "../components";
 const SingleProductPage = () => {
   const { id } = useParams();
-  const { single_product: product } = useSelector((store) => store.products);
+  const { products } = useSelector((store) => store.products);
+  const [ product ] = products.filter((product) => id === product._id)
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSingleProduct(`${url}${id}`));
+    dispatch(getAllProducts());
   }, [id]);
+  
 
+  if (!product) {
+    return
+  }
   const { name, price, description, stock, id: sku, images } = product;
   return (
     <Wrapper>
       <div className="section section-center page">
         <Link to="/products" className="btn">
-          back to products
+          обратно към продуктите
         </Link>
         <div className="product-center">
           <ProductImages images={images} />
@@ -30,8 +36,8 @@ const SingleProductPage = () => {
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
             <p className="info">
-              <span>Available : </span>
-              {stock > 0 ? "In stock" : "out of stock"}
+              <span>Наличност: </span>
+              {stock > 0 ? "Да" : "в момента не е налично"}
             </p>
             <hr />
             {stock > 0 && <AddToCart product={product} />}
@@ -50,6 +56,8 @@ const Wrapper = styled.main`
   }
   .price {
     color: var(--clr-primary-5);
+    
+    text-transform: none;
   }
   .desc {
     line-height: 2;

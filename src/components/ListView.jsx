@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 const ListView = ({ products }) => {
+  console.log(products)
   return (
     <Wrapper>
       {products.map((product) => {
-        const { _id: id, image, name, price, description } = product
+        const { _id: id, images, name, price, description } = product
         return (
           <article key={id}>
-            <img src={image} alt={name} />
+            <img src={images[0]} alt={name} />
             <div>
               <h4>{name}</h4>
               <h5 className='price'>{formatPrice(price)}</h5>

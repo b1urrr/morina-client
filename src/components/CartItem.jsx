@@ -20,7 +20,7 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
         <div>
           <h5 className='name'>{name}</h5>
           <p className='color'>
-            color :
+            цвят:
             <span style={{ background: color }} />
           </p>
           <h5 className='price-small'>{formatPrice(price)}</h5>
@@ -68,6 +68,8 @@ const Wrapper = styled.article`
   h5 {
     font-size: 0.75rem;
     margin-bottom: 0;
+    
+    text-transform: none;
   }
 
   .color {

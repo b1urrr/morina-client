@@ -17,18 +17,18 @@ const shipping_fee = 534
       <div>
         <article>
           <h5>
-            subtotal:<span>{formatPrice(total_amount)}</span>
+            всички продукти:<span>{formatPrice(total_amount)}</span>
           </h5>
           <p>
-            shipping fee:<span>{formatPrice(shipping_fee)}</span>
+            цена за доставка:<span>{formatPrice(shipping_fee)}</span>
           </p>
           <hr />
           <h4>
-            order total:<span>{formatPrice(total_amount + shipping_fee)}</span>
+            общо:<span>{formatPrice(total_amount + shipping_fee)}</span>
           </h4>
         </article>
         <Link to="/checkout" className="btn">
-          proceed to checkout
+          Продължи към плащане
         </Link>
       </div>
     </Wrapper>
@@ -64,6 +64,9 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     text-align: center;
     font-weight: 700;
+  }
+  span {
+    text-transform: none;
   }
 `;
 

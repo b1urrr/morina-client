@@ -28,10 +28,10 @@ const Sort = () => {
           <BsList />
         </button>
       </div>
-      <p>{products.length} products found</p>
+      <p>{products.length} намерени продукта</p>
       <hr />
       <form>
-        <label htmlFor="sort">sort by</label>
+        <label htmlFor="sort">сортирай</label>
         <select
           name="sort"
           id="sort"
@@ -39,10 +39,10 @@ const Sort = () => {
           onChange={(e) => dispatch(updateSort({value: e.target.value}))}
           className="sort-input"
         >
-          <option value="price-lowest">price (lowest)</option>
-          <option value="price-highest">price (highest)</option>
-          <option value="name-a">name (a - z)</option>
-          <option value="name-z">name (z - a)</option>
+          <option value="price-lowest">цена (най-ниска)</option>
+          <option value="price-highest">цена (най-висока)</option>
+          <option value="name-a">име (а - я)</option>
+          <option value="name-z">име (я - а)</option>
         </select>
       </form>
     </Wrapper>

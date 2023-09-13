@@ -15,7 +15,6 @@ const Filters = () => {
   } = useSelector((store) => store.products);
 
   const categories = getUniqueValues(products, "category");
-  const companies = getUniqueValues(products, "company");
   const colors = getUniqueValues(products, "colors");
 
   return (
@@ -28,7 +27,7 @@ const Filters = () => {
               type="text"
               name="text"
               value={text}
-              placeholder="search"
+              placeholder="търси"
               onChange={(e) =>
                 dispatch(
                   updateFilters({ value: e.target.value, name: e.target.name })
@@ -40,7 +39,7 @@ const Filters = () => {
           {/* end of search input */}
           {/* categories */}
           <div className="form-control">
-            <h5>category</h5>
+            <h5>категория</h5>
             <div>
               {categories.map((c, index) => {
                 return (
@@ -58,7 +57,7 @@ const Filters = () => {
                     name="category"
                     value={c}
                     className={`${
-                      category === c.toLowerCase() ? "active" : null
+                      category === c ? "active" : null
                     }`}
                   >
                     {c}
@@ -70,7 +69,7 @@ const Filters = () => {
           {/* end of categories */}
           {/* colors */}
           <div className="form-control">
-            <h5>colors</h5>
+            <h5>цветове</h5>
             <div className="colors">
               {colors.map((c, index) => {
                 if (c === "all") {
@@ -91,7 +90,7 @@ const Filters = () => {
                         color === "all" ? "all-btn active" : "all-btn"
                       }`}
                     >
-                      all
+                      всички
                     </button>
                   );
                 }
@@ -122,7 +121,7 @@ const Filters = () => {
           {/* end of colors */}
            {/* price */}
            <div className="form-control">
-            <h5>price</h5>
+            <h5>цена</h5>
             <p className="price">{formatPrice(price)}</p>
             <input
               type="range"
@@ -183,12 +182,6 @@ const Wrapper = styled.section`
   .active {
     border-color: var(--clr-gray-5);
   }
-  .company {
-    background: var(--clr-gray-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    padding: 0.25rem;
-  }
   .colors {
     display: flex;
     align-items: center;
@@ -226,14 +219,6 @@ const Wrapper = styled.section`
   }
   .price {
     margin-bottom: 0.25rem;
-  }
-  .shipping {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    text-transform: capitalize;
-    column-gap: 0.5rem;
-    font-size: 1rem;
   }
   .clear-btn {
     background: var(--clr-red-dark);

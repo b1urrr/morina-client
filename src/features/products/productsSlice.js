@@ -179,5 +179,6 @@ export const {
   updateFilters,
   clearFilters,
   setCurrentId,
+  setSingleProduct,
 } = productsSlice.actions;
 export default productsSlice.reducer;

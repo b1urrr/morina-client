@@ -38,7 +38,7 @@ const cartSlice = createSlice({
           name: product.name,
           color,
           amount,
-          image: product.images[0].url,
+          image: product.images[0],
           price: product.price,
           max: product.stock,
         };
